@@ -24,6 +24,7 @@ contract Manage_Cars{
         uint carNum;
         string Brand;
         string Model;
+        string[2] Extras;
         uint Year;
         uint RegisterTime;
         bool isSale;
@@ -33,7 +34,7 @@ contract Manage_Cars{
     mapping (uint => Car) public Cars;
 
     //Car add function
-    function addCar(string memory _brand, string memory _model, uint _year) external onlyOwner{
+    function addCar(string memory _brand, string memory _model, uint _year, string memory _Extra1, string memory _Extra2, string memory _Extra3) external onlyOwner{
 
         carCounter++;
         uint carId = carCounter;
@@ -42,6 +43,9 @@ contract Manage_Cars{
         car.Brand = _brand;
         car.Model = _model;
         car.Year = _year;
+        car.Extras[0] =  _Extra1;
+        car.Extras[1] =  _Extra2;
+        car.Extras[2] =  _Extra3;
         car.RegisterTime = block.timestamp;
         car.isSale = true;
         Cars[carId]=car;
